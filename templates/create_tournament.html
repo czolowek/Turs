@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Создать турнир</h2>
+
+<form method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+    <div class="form-group">
+        <label for="name">Название турнира:</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="description">Описание:</label>
+        <textarea id="description" name="description" rows="4"></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label for="max_teams">Максимальное количество команд:</label>
+        <select id="max_teams" name="max_teams">
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="16" selected>16</option>
+            <option value="32">32</option>
+        </select>
+    </div>
+    
+    <button type="submit" class="btn">Создать турнир</button>
+    <a href="{{ url_for('tournaments') }}" class="btn btn-danger">Отмена</a>
+</form>
+{% endblock %}

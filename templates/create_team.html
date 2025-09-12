@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Создать команду</h2>
+
+<form method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+    <div class="form-group">
+        <label for="name">Название команды:</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="description">Описание:</label>
+        <textarea id="description" name="description" rows="4"></textarea>
+    </div>
+    
+    <button type="submit" class="btn">Создать команду</button>
+    <a href="{{ url_for('teams') }}" class="btn btn-danger">Отмена</a>
+</form>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Турниры</h2>
+
+<a href="{{ url_for('create_tournament') }}" class="btn" style="margin-bottom: 20px;">Создать турнир</a>
+
+{% if tournaments %}
+    {% for tournament in tournaments %}
+        <div class="card">
+            <h3>{{ tournament.name }}</h3>
+            <p><strong>Описание:</strong> {{ tournament.description or 'Нет описания' }}</p>
+            <p><strong>Создатель:</strong> {{ tournament.creator_name or 'Неизвестно' }}</p>
+            <p><strong>Команд зарегистрировано:</strong> {{ tournament.team_count }} / {{ tournament.max_teams }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Турниры пока не созданы.</p>
+{% endif %}
+{% endblock %}

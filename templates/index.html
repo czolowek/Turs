@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Добро пожаловать в турнирную систему!</h2>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px;">
+    <div>
+        <h3>Последние турниры</h3>
+        {% if tournaments %}
+            {% for tournament in tournaments %}
+                <div class="card">
+                    <h4>{{ tournament.name }}</h4>
+                    <p>{{ tournament.description or 'Описание отсутствует' }}</p>
+                    <p><strong>Максимум команд:</strong> {{ tournament.max_teams }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Турниры пока не созданы.</p>
+        {% endif %}
+        <a href="{{ url_for('tournaments') }}" class="btn">Все турниры</a>
+    </div>
+    
+    <div>
+        <h3>Последние команды</h3>
+        {% if teams %}
+            {% for team in teams %}
+                <div class="card">
+                    <h4>{{ team.name }}</h4>
+                    <p>{{ team.description or 'Описание отсутствует' }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Команды пока не созданы.</p>
+        {% endif %}
+        <a href="{{ url_for('teams') }}" class="btn">Все команды</a>
+    </div>
+</div>
+{% endblock %}
