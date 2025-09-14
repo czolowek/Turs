@@ -17,7 +17,7 @@
         {% else %}
             <p>Турниры пока не созданы.</p>
         {% endif %}
-        <a href="{{ url_for('tournaments') }}" class="btn">Все турниры</a>
+        <a href="/tournaments" class="btn">Все турниры</a>
     </div>
     
     <div>
@@ -32,7 +32,7 @@
         {% else %}
             <p>Команды пока не созданы.</p>
         {% endif %}
-        <a href="{{ url_for('teams') }}" class="btn">Все команды</a>
+        <a href="/teams" class="btn">Все команды</a>
     </div>
 </div>
 {% endblock %}

@@ -3,7 +3,7 @@
 {% block content %}
 <h2>Команды</h2>
 
-<a href="{{ url_for('create_team') }}" class="btn" style="margin-bottom: 20px;">Создать команду</a>
+<a href="/create_team" class="btn" style="margin-bottom: 20px;">Создать команду</a>
 
 {% if teams %}
     {% for team in teams %}
@@ -13,7 +13,7 @@
             <p><strong>Создатель:</strong> {{ team.creator_name or 'Неизвестно' }}</p>
             <p><strong>Участников:</strong> {{ team.member_count }}</p>
             
-            <form method="POST" action="{{ url_for('join_team', team_id=team.id) }}" style="display: inline;">
+            <form method="POST" action="/join_team/{{ team.id }}" style="display: inline;">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
                 <button type="submit" class="btn">Присоединиться</button>
             </form>

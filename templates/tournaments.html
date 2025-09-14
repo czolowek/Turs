@@ -3,7 +3,7 @@
 {% block content %}
 <h2>Турниры</h2>
 
-<a href="{{ url_for('create_tournament') }}" class="btn" style="margin-bottom: 20px;">Создать турнир</a>
+<a href="/create_tournament" class="btn" style="margin-bottom: 20px;">Создать турнир</a>
 
 {% if tournaments %}
     {% for tournament in tournaments %}

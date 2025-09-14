@@ -13,7 +13,7 @@
             {% if tournaments %}
                 <div style="margin-top: 10px;">
                     {% for tournament in tournaments %}
-                        <form method="POST" action="{{ url_for('join_tournament') }}" style="display: inline; margin-right: 10px; margin-bottom: 5px;">
+                        <form method="POST" action="/join_tournament" style="display: inline; margin-right: 10px; margin-bottom: 5px;">
                             <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
                             <input type="hidden" name="tournament_id" value="{{ tournament.id }}">
                             <input type="hidden" name="team_id" value="{{ team.id }}">
@@ -28,7 +28,7 @@
     {% endfor %}
 {% else %}
     <p>Вы пока не состоите ни в одной команде.</p>
-    <a href="{{ url_for('create_team') }}" class="btn">Создать команду</a>
-    <a href="{{ url_for('teams') }}" class="btn">Присоединиться к команде</a>
+    <a href="/create_team" class="btn">Создать команду</a>
+    <a href="/teams" class="btn">Присоединиться к команде</a>
 {% endif %}
 {% endblock %}

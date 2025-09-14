@@ -116,31 +116,30 @@
     <div class="container">
         <div class="header">
             <h1>Турнирная система</h1>
-            {% if session.username %}
-                <p>Добро пожаловать, {{ session.username }}!</p>
+            {% if username %}
+                <p>Добро пожаловать, {{ username }}!</p>
             {% endif %}
         </div>
         
-        {% if session.user_id %}
+        {% if user_id %}
         <div class="nav">
-            <a href="{{ url_for('index') }}">Главная</a>
-            <a href="{{ url_for('teams') }}">Команды</a>
-            <a href="{{ url_for('tournaments') }}">Турниры</a>
-            <a href="{{ url_for('my_teams') }}">Мои команды</a>
-            <form method="POST" action="{{ url_for('logout') }}" style="display: inline;">
+            <a href="/">Главная</a>
+            <a href="/teams">Команды</a>
+            <a href="/tournaments">Турниры</a>
+            <a href="/my_teams">Мои команды</a>
+            <form method="POST" action="/logout" style="display: inline;">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
                 <button type="submit" class="btn" style="background-color: #dc3545; margin-left: 5px;">Выход</button>
             </form>
         </div>
         {% endif %}
         
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert">{{ message }}</div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+        {% if error %}
+            <div class="alert" style="background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;">{{ error }}</div>
+        {% endif %}
+        {% if success %}
+            <div class="alert success">{{ success }}</div>
+        {% endif %}
         
         {% block content %}{% endblock %}
     </div>
